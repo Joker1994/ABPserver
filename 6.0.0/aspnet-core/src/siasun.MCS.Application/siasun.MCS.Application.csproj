@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <VersionPrefix>1.0.0.0</VersionPrefix>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <AssemblyName>siasun.MCS.Application</AssemblyName>
+    <PackageId>siasun.MCS.Application</PackageId>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace>siasun.MCS</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="ACSEntitys\TB_AlarmInfoEntityAppService.cs~RF6a7a4d.TMP" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\siasun.MCS.Core\siasun.MCS.Core.csproj" />
+  </ItemGroup>
+</Project>
