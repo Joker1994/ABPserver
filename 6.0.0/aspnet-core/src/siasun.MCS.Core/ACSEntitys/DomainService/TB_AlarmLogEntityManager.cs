@@ -1,0 +1,117 @@
+
+
+using Abp.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+
+namespace siasun.MCS.ACSEntitys.DomainService
+{
+    /// <summary>
+    /// 领域服务层一个模块的核心业务逻辑
+    ///</summary>
+    public class TB_AlarmLogEntityManager :MCSDomainServiceBase, ITB_AlarmLogEntityManager
+    {
+		
+		private readonly IRepository<TB_AlarmLogEntity,String> _tB_AlarmLogEntityRepository;
+
+		/// <summary>
+		/// TB_AlarmLogEntity的构造方法
+		/// 通过构造函数注册服务到依赖注入容器中
+		///</summary>
+	public TB_AlarmLogEntityManager(IRepository<TB_AlarmLogEntity, String> tB_AlarmLogEntityRepository)	{
+			_tB_AlarmLogEntityRepository =  tB_AlarmLogEntityRepository;
+		}
+
+		 #region 查询判断的业务
+
+        /// <summary>
+        /// 返回表达式数的实体信息即IQueryable类型
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<TB_AlarmLogEntity> QueryTB_AlarmLogEntitys()
+        {
+            return _tB_AlarmLogEntityRepository.GetAll();
+        }
+
+        /// <summary>
+        /// 返回即IQueryable类型的实体，不包含EF Core跟踪标记
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<TB_AlarmLogEntity> QueryTB_AlarmLogEntitysAsNoTracking()
+        {
+            return _tB_AlarmLogEntityRepository.GetAll().AsNoTracking();
+        }
+
+        /// <summary>
+        /// 根据Id查询实体信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<TB_AlarmLogEntity> FindByIdAsync(String id)
+        {
+            var entity = await _tB_AlarmLogEntityRepository.GetAsync(id);
+            return entity;
+        }
+
+        /// <summary>
+        /// 检查实体是否存在
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<bool> IsExistAsync(String id)
+        {
+            var result = await _tB_AlarmLogEntityRepository.GetAll().AnyAsync(a => a.Id == id);
+            return result;
+        }
+
+        #endregion
+
+		 
+		 
+        public async Task<TB_AlarmLogEntity> CreateAsync(TB_AlarmLogEntity entity)
+        {
+            entity.Id = await _tB_AlarmLogEntityRepository.InsertAndGetIdAsync(entity);
+            return entity;
+        }
+
+        public async Task UpdateAsync(TB_AlarmLogEntity entity)
+        {
+            await _tB_AlarmLogEntityRepository.UpdateAsync(entity);
+        }
+
+        public async Task DeleteAsync(String id)
+        {
+            //TODO:删除前的逻辑判断，是否允许删除
+            await _tB_AlarmLogEntityRepository.DeleteAsync(id);
+        }
+
+        /// <summary>
+        /// 批量删除
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task BatchDelete(List<String> input)
+        {
+            //TODO:删除前的逻辑判断，是否允许删除
+            await _tB_AlarmLogEntityRepository.DeleteAsync(a => input.Contains(a.Id));
+        }
+	 
+			
+							//// custom codes
+									
+							
+
+							//// custom codes end
+
+
+
+		 
+		  
+		 
+
+	}
+}

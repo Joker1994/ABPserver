@@ -26,7 +26,7 @@ namespace siasun.MCS.ACSEntitys
     [AbpAuthorize]
     public class TP_OrderLogEntityAppService : MCSAppServiceBase, ITP_OrderLogEntityAppService
     {
-        private readonly IRepository<TP_OrderLogEntity, long>
+        private readonly IRepository<TP_OrderLogEntity, string>
             _tP_OrderLogEntityRepository;
 
 
@@ -37,7 +37,7 @@ namespace siasun.MCS.ACSEntitys
         ///
         //</summary>
         public TP_OrderLogEntityAppService(
-        IRepository<TP_OrderLogEntity, long>
+        IRepository<TP_OrderLogEntity, string>
 tP_OrderLogEntityRepository
             , ITP_OrderLogEntityManager tP_OrderLogEntityManager
 
@@ -85,7 +85,7 @@ tP_OrderLogEntityRepository
         /// 通过指定id获取TP_OrderLogEntityListDto信息
         /// //</summary>
         [AbpAuthorize(TP_OrderLogEntityPermissions.TP_OrderLogEntity_Query)]
-        public async Task<TP_OrderLogEntityListDto> GetById(EntityDto<long> input)
+        public async Task<TP_OrderLogEntityListDto> GetById(EntityDto<string> input)
         {
             var entity = await _tP_OrderLogEntityRepository.GetAsync(input.Id);
 
@@ -99,14 +99,14 @@ tP_OrderLogEntityRepository
         /// <param name="input"></param>
         /// <returns></returns>
         [AbpAuthorize(TP_OrderLogEntityPermissions.TP_OrderLogEntity_Create, TP_OrderLogEntityPermissions.TP_OrderLogEntity_Edit)]
-        public async Task<GetTP_OrderLogEntityForEditOutput> GetForEdit(NullableIdDto<long> input)
+        public async Task<GetTP_OrderLogEntityForEditOutput> GetForEdit(string input)
         {
             var output = new GetTP_OrderLogEntityForEditOutput();
             TP_OrderLogEntityEditDto editDto;
 
-            if (input.Id.HasValue)
+            if (!string.IsNullOrEmpty(input))
             {
-                var entity = await _tP_OrderLogEntityRepository.GetAsync(input.Id.Value);
+                var entity = await _tP_OrderLogEntityRepository.GetAsync(input);
                 editDto = ObjectMapper.Map<TP_OrderLogEntityEditDto>(entity);
             }
             else
@@ -130,7 +130,7 @@ tP_OrderLogEntityRepository
         public async Task CreateOrUpdate(CreateOrUpdateTP_OrderLogEntityInput input)
         {
 
-            if (input.TP_OrderLogEntity.Id.HasValue)
+            if (!string.IsNullOrEmpty(input.TP_OrderLogEntity.c_Id))
             {
                 await Update(input.TP_OrderLogEntity);
             }
@@ -165,7 +165,7 @@ tP_OrderLogEntityRepository
         {
             //TODO:更新前的逻辑判断，是否允许更新
 
-            var entity = await _tP_OrderLogEntityRepository.GetAsync(input.Id.Value);
+            var entity = await _tP_OrderLogEntityRepository.GetAsync(input.c_Id);
             //  input.MapTo(entity);
             //将input属性的值赋值到entity中
             ObjectMapper.Map(input, entity);
@@ -180,7 +180,7 @@ tP_OrderLogEntityRepository
         /// <param name="input"></param>
         /// <returns></returns>
         [AbpAuthorize(TP_OrderLogEntityPermissions.TP_OrderLogEntity_Delete)]
-        public async Task Delete(EntityDto<long> input)
+        public async Task Delete(EntityDto<string> input)
         {
             //TODO:删除前的逻辑判断，是否允许删除
             await _tP_OrderLogEntityManager.DeleteAsync(input.Id);
@@ -192,7 +192,7 @@ tP_OrderLogEntityRepository
         /// 批量删除TP_OrderLogEntity的方法
         /// //</summary>
         [AbpAuthorize(TP_OrderLogEntityPermissions.TP_OrderLogEntity_BatchDelete)]
-        public async Task BatchDelete(List<long> input)
+        public async Task BatchDelete(List<string> input)
         {
             // TODO:批量删除前的逻辑判断，是否允许删除
             await _tP_OrderLogEntityManager.BatchDelete(input);

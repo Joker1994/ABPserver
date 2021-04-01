@@ -5,9 +5,9 @@ using siasun.MCS.ACSEntitys;
 
 namespace siasun.MCS.ACSEntitys.Dtos
 {
-	/// <summary>
-	/// 获取的传入参数Dto
-	/// </summary>
+    /// <summary>
+    /// 获取的传入参数Dto
+    /// </summary>
     public class GetTP_ARVStatusEntitysInput : PagedSortedAndFilteredInputDto, IShouldNormalize
     {
 
@@ -21,11 +21,13 @@ namespace siasun.MCS.ACSEntitys.Dtos
                 Sorting = "Id";
             }
         }
-		
-							//// custom codes
-									
-							
 
-							//// custom codes end
+        //// custom codes
+
+        public TP_ARVStatusEntityEditDto TP_ARVStatusEntity { get; set; }
+
+        public int?[] arvIdArr { get; set; }
+
+        //// custom codes end
     }
 }

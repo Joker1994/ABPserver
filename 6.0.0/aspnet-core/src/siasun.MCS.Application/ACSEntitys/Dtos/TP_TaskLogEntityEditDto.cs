@@ -15,14 +15,6 @@ namespace  siasun.MCS.ACSEntitys.Dtos
 	/// </summary>
     public class TP_TaskLogEntityEditDto
     {
-
-        /// <summary>
-        /// Id
-        /// </summary>
-        public long? Id { get; set; }         
-
-
-        
 		/// <summary>
 		/// c_Id
 		/// </summary>

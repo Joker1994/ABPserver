@@ -26,7 +26,7 @@ namespace siasun.MCS.ACSEntitys
     [AbpAuthorize]
     public class TP_TaskListEntityAppService : MCSAppServiceBase, ITP_TaskListEntityAppService
     {
-        private readonly IRepository<TP_TaskListEntity, long>
+        private readonly IRepository<TP_TaskListEntity, string>
             _tP_TaskListEntityRepository;
 
 
@@ -37,7 +37,7 @@ namespace siasun.MCS.ACSEntitys
         ///
         //</summary>
         public TP_TaskListEntityAppService(
-        IRepository<TP_TaskListEntity, long>
+        IRepository<TP_TaskListEntity, string>
 tP_TaskListEntityRepository
             , ITP_TaskListEntityManager tP_TaskListEntityManager
 
@@ -85,7 +85,7 @@ tP_TaskListEntityRepository
         /// 通过指定id获取TP_TaskListEntityListDto信息
         /// //</summary>
         [AbpAuthorize(TP_TaskListEntityPermissions.TP_TaskListEntity_Query)]
-        public async Task<TP_TaskListEntityListDto> GetById(EntityDto<long> input)
+        public async Task<TP_TaskListEntityListDto> GetById(EntityDto<string> input)
         {
             var entity = await _tP_TaskListEntityRepository.GetAsync(input.Id);
 
@@ -99,14 +99,14 @@ tP_TaskListEntityRepository
         /// <param name="input"></param>
         /// <returns></returns>
         [AbpAuthorize(TP_TaskListEntityPermissions.TP_TaskListEntity_Create, TP_TaskListEntityPermissions.TP_TaskListEntity_Edit)]
-        public async Task<GetTP_TaskListEntityForEditOutput> GetForEdit(NullableIdDto<long> input)
+        public async Task<GetTP_TaskListEntityForEditOutput> GetForEdit(string input)
         {
             var output = new GetTP_TaskListEntityForEditOutput();
             TP_TaskListEntityEditDto editDto;
 
-            if (input.Id.HasValue)
+            if (!string.IsNullOrEmpty(input))
             {
-                var entity = await _tP_TaskListEntityRepository.GetAsync(input.Id.Value);
+                var entity = await _tP_TaskListEntityRepository.GetAsync(input);
                 editDto = ObjectMapper.Map<TP_TaskListEntityEditDto>(entity);
             }
             else
@@ -130,7 +130,7 @@ tP_TaskListEntityRepository
         public async Task CreateOrUpdate(CreateOrUpdateTP_TaskListEntityInput input)
         {
 
-            if (input.TP_TaskListEntity.Id.HasValue)
+            if (!string.IsNullOrEmpty(input.TP_TaskListEntity.c_Id))
             {
                 await Update(input.TP_TaskListEntity);
             }
@@ -165,7 +165,7 @@ tP_TaskListEntityRepository
         {
             //TODO:更新前的逻辑判断，是否允许更新
 
-            var entity = await _tP_TaskListEntityRepository.GetAsync(input.Id.Value);
+            var entity = await _tP_TaskListEntityRepository.GetAsync(input.c_Id);
             //  input.MapTo(entity);
             //将input属性的值赋值到entity中
             ObjectMapper.Map(input, entity);
@@ -180,7 +180,7 @@ tP_TaskListEntityRepository
         /// <param name="input"></param>
         /// <returns></returns>
         [AbpAuthorize(TP_TaskListEntityPermissions.TP_TaskListEntity_Delete)]
-        public async Task Delete(EntityDto<long> input)
+        public async Task Delete(EntityDto<string> input)
         {
             //TODO:删除前的逻辑判断，是否允许删除
             await _tP_TaskListEntityManager.DeleteAsync(input.Id);
@@ -192,7 +192,7 @@ tP_TaskListEntityRepository
         /// 批量删除TP_TaskListEntity的方法
         /// //</summary>
         [AbpAuthorize(TP_TaskListEntityPermissions.TP_TaskListEntity_BatchDelete)]
-        public async Task BatchDelete(List<long> input)
+        public async Task BatchDelete(List<string> input)
         {
             // TODO:批量删除前的逻辑判断，是否允许删除
             await _tP_TaskListEntityManager.BatchDelete(input);

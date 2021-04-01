@@ -14,15 +14,7 @@ namespace  siasun.MCS.ACSEntitys.Dtos
 	/// <see cref="TP_OrderListEntity"/>
 	/// </summary>
     public class TP_OrderListEntityEditDto
-    {
-
-        /// <summary>
-        /// Id
-        /// </summary>
-        public long? Id { get; set; }         
-
-
-        
+    {    
 		/// <summary>
 		/// c_Id
 		/// </summary>

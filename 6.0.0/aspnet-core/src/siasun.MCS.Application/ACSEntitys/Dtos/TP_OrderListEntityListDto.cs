@@ -15,18 +15,8 @@ namespace siasun.MCS.ACSEntitys.Dtos
 	/// 的列表DTO
 	/// <see cref="TP_OrderListEntity"/>
 	/// </summary>
-    public class TP_OrderListEntityListDto : EntityDto<long> 
+    public class TP_OrderListEntityListDto : EntityDto<string> 
     {
-
-        
-		/// <summary>
-		/// c_Id
-		/// </summary>
-		[Required(ErrorMessage="c_Id不能为空")]
-		public String c_Id { get; set; }
-
-
-
 		/// <summary>
 		/// c_OrderID
 		/// </summary>

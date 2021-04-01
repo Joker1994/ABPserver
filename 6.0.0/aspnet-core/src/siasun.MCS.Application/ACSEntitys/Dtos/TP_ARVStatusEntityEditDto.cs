@@ -15,13 +15,6 @@ namespace  siasun.MCS.ACSEntitys.Dtos
 	/// </summary>
     public class TP_ARVStatusEntityEditDto
     {
-
-        /// <summary>
-        /// Id
-        /// </summary>
-        public long? Id { get; set; }         
-
-
         
 		/// <summary>
 		/// c_Id

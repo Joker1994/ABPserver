@@ -15,17 +15,8 @@ namespace siasun.MCS.ACSEntitys.Dtos
 	/// 的列表DTO
 	/// <see cref="TP_TaskLogEntity"/>
 	/// </summary>
-    public class TP_TaskLogEntityListDto : EntityDto<long> 
+    public class TP_TaskLogEntityListDto : EntityDto<string> 
     {
-
-        
-		/// <summary>
-		/// c_Id
-		/// </summary>
-		public String c_Id { get; set; }
-
-
-
 		/// <summary>
 		/// c_TaskId
 		/// </summary>

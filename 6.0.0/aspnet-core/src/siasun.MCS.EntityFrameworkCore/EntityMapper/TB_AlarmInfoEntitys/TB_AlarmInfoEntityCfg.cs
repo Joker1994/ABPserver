@@ -6,9 +6,9 @@ using siasun.MCS.ACSEntitys;
 
 namespace siasun.MCS.EntityMapper.TB_AlarmInfoEntitys
 {
-    public class TB_AlarmInfoEntityCfg : IEntityTypeConfiguration<TB_AlarmInfoEntity>
+    public class TB_AlarmInfoEntityCfg : IEntityTypeConfiguration<TB_AlarmLogEntity>
     {
-        public void Configure(EntityTypeBuilder<TB_AlarmInfoEntity> builder)
+        public void Configure(EntityTypeBuilder<TB_AlarmLogEntity> builder)
         {
 
 			 

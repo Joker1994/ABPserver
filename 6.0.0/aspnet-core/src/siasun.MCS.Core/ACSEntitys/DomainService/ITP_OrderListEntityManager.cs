@@ -30,13 +30,13 @@ namespace siasun.MCS.ACSEntitys.DomainService
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
-		Task<TP_OrderListEntity> FindByIdAsync(long id);
+		Task<TP_OrderListEntity> FindByIdAsync(string id);
 	
 		/// <summary>
 		/// 检查实体是否存在
 		/// </summary>
 		/// <returns></returns>
-		Task<bool> IsExistAsync(long id);
+		Task<bool> IsExistAsync(string id);
 
 
 		/// <summary>
@@ -58,13 +58,13 @@ namespace siasun.MCS.ACSEntitys.DomainService
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
-		Task DeleteAsync(long id);
+		Task DeleteAsync(string id);
 		/// <summary>
 		/// 批量删除
 		/// </summary>
 		/// <param name="input">Id的集合</param>
 		/// <returns></returns>
-		Task BatchDelete(List<long> input);
+		Task BatchDelete(List<string> input);
 
 
 		

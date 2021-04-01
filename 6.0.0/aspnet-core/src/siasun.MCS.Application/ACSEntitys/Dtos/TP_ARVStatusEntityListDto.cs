@@ -15,7 +15,7 @@ namespace siasun.MCS.ACSEntitys.Dtos
 	/// 的列表DTO
 	/// <see cref="TP_ARVStatusEntity"/>
 	/// </summary>
-    public class TP_ARVStatusEntityListDto : EntityDto<long> 
+    public class TP_ARVStatusEntityListDto : EntityDto<string> 
     {
 
         

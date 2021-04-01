@@ -17,15 +17,15 @@ namespace siasun.MCS.EntityFrameworkCore
         }
 
         /// <summary>
-        /// Add-Migration AddNewTP_ARVStatusEntityEntity_Migration
+        /// Add-Migration TB_MapInfo
         /// update-database
         /// </summary>
         public DbSet<TP_ARVStatusEntity> TP_ARVStatus { get; set; }
-        public DbSet<TB_AlarmInfoEntity> TB_AlarmInfo { get; set; }
         public DbSet<TB_AlarmLogEntity> TB_AlarmLog { get; set; }
         public DbSet<TP_OrderListEntity> TP_OrderList { get; set; }
         public DbSet<TP_OrderLogEntity> TP_OrderLog { get; set; }
         public DbSet<TP_TaskListEntity> TP_TaskList { get; set; }
         public DbSet<TP_TaskLogEntity> TP_TaskLog { get; set; }
+        //public DbSet<TB_MapInfoEntity> TB_MapInfo { get; set; }
     }
 }

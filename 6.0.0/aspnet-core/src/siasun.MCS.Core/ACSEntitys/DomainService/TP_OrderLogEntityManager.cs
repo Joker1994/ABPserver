@@ -16,13 +16,13 @@ namespace siasun.MCS.ACSEntitys.DomainService
     public class TP_OrderLogEntityManager :MCSDomainServiceBase, ITP_OrderLogEntityManager
     {
 		
-		private readonly IRepository<TP_OrderLogEntity,long> _tP_OrderLogEntityRepository;
+		private readonly IRepository<TP_OrderLogEntity,string> _tP_OrderLogEntityRepository;
 
 		/// <summary>
 		/// TP_OrderLogEntity的构造方法
 		/// 通过构造函数注册服务到依赖注入容器中
 		///</summary>
-	public TP_OrderLogEntityManager(IRepository<TP_OrderLogEntity, long> tP_OrderLogEntityRepository)	{
+	public TP_OrderLogEntityManager(IRepository<TP_OrderLogEntity, string> tP_OrderLogEntityRepository)	{
 			_tP_OrderLogEntityRepository =  tP_OrderLogEntityRepository;
 		}
 
@@ -51,7 +51,7 @@ namespace siasun.MCS.ACSEntitys.DomainService
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<TP_OrderLogEntity> FindByIdAsync(long id)
+        public async Task<TP_OrderLogEntity> FindByIdAsync(string id)
         {
             var entity = await _tP_OrderLogEntityRepository.GetAsync(id);
             return entity;
@@ -62,7 +62,7 @@ namespace siasun.MCS.ACSEntitys.DomainService
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<bool> IsExistAsync(long id)
+        public async Task<bool> IsExistAsync(string id)
         {
             var result = await _tP_OrderLogEntityRepository.GetAll().AnyAsync(a => a.Id == id);
             return result;
@@ -83,7 +83,7 @@ namespace siasun.MCS.ACSEntitys.DomainService
             await _tP_OrderLogEntityRepository.UpdateAsync(entity);
         }
 
-        public async Task DeleteAsync(long id)
+        public async Task DeleteAsync(string id)
         {
             //TODO:删除前的逻辑判断，是否允许删除
             await _tP_OrderLogEntityRepository.DeleteAsync(id);
@@ -94,7 +94,7 @@ namespace siasun.MCS.ACSEntitys.DomainService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task BatchDelete(List<long> input)
+        public async Task BatchDelete(List<string> input)
         {
             //TODO:删除前的逻辑判断，是否允许删除
             await _tP_OrderLogEntityRepository.DeleteAsync(a => input.Contains(a.Id));

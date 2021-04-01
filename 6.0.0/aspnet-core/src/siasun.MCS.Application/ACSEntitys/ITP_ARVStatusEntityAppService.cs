@@ -24,7 +24,7 @@ namespace siasun.MCS.ACSEntitys
 		/// <summary>
 		/// 通过指定id获取ListDto信息
 		/// </summary>
-		Task<TP_ARVStatusEntityListDto> GetById(EntityDto<long> input);
+		Task<TP_ARVStatusEntityListDto> GetById(EntityDto<string> input);
 
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace siasun.MCS.ACSEntitys
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<GetTP_ARVStatusEntityForEditOutput> GetForEdit(NullableIdDto<long> input);
+        Task<GetTP_ARVStatusEntityForEditOutput> GetForEdit(string input);
 
 
         /// <summary>
@@ -48,13 +48,13 @@ namespace siasun.MCS.ACSEntitys
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task Delete(EntityDto<long> input);
+        Task Delete(EntityDto<string> input);
 
 		
         /// <summary>
         /// 批量删除
         /// </summary>
-        Task BatchDelete(List<long> input);
+        Task BatchDelete(List<string> input);
 
         //// custom codes
 

@@ -1320,722 +1320,78 @@ namespace siasun.MCS.Migrations
                     b.ToTable("AbpWebhookSubscriptions");
                 });
 
-            modelBuilder.Entity("siasun.MCS.ACSEntitys.TB_AlarmInfoEntity", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("C_DeviceDesc")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_DeviceID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_DeviceType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_ID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_Measure")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_Reason")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_Sw01")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_Sw02")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_Sw03")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_Sw04")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_Sw05")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("C_TimeStamp")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("C_Type")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("C_UpdateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("N_State")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_DeleteMark")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_EnabledMark")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TB_AlarmInfo");
-                });
-
-            modelBuilder.Entity("siasun.MCS.ACSEntitys.TB_AlarmLogEntity", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("C_DeviceDesc")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_DeviceID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_DeviceType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_ErrorCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_ID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("C_LogTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("C_Measure")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_Reason")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("C_RestoreTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("C_Sw01")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_Sw02")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_Sw03")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_Sw04")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("C_Sw05")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("C_TimeStamp")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("C_Type")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TB_AlarmLog");
-                });
-
-            modelBuilder.Entity("siasun.MCS.ACSEntitys.TP_ARVStatusEntity", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("c_ARVDesc")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_ARVId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_ARVType")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_AvoidAgvId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_BatteryState")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_BatteryVoltage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_BatteryVolume")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_DeleteMark")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_EnabledMark")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_EndPoint")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_ErrorCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_Id")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_OrderId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_RobotErrorCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_RobotState")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_StartPoint")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_Sw01")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_Sw02")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_Sw03")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_Sw04")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_Sw05")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_TargetLoc")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_TaskId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_TaskStepNo")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_TaskType")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("c_TimeStamp")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("c_WorkCode")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_WorkState")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TP_ARVStatus");
-                });
-
-            modelBuilder.Entity("siasun.MCS.ACSEntitys.TP_OrderListEntity", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<bool?>("c_CanStart")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("c_CarrierID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_CarrierProcessingStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_CarrierStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_CarrierType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_DeleteMark")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("c_DueTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("c_EnabledMark")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_GroupCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_GroupOrder")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_GroupSequence")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_GroupType")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_HandleFlag")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_Id")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_LotInfo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_ManualFlag")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_OrderID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_OrderSource")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_OrderType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_Priority")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_ProcessPlan")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_ProcessStep")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_SourceLoc")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_SourceLocType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_SourcePort")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_Sw02")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_Sw03")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_Sw04")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_Sw05")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_TargetLoc")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_TargetLocType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_TargetPort")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_TaskCount")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("c_TimeStamp")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("d_AnalyzeTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("d_CreateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("d_EndTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("d_PredictTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("d_StartTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("n_AGVID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("n_AGVType")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TP_OrderList");
-                });
-
-            modelBuilder.Entity("siasun.MCS.ACSEntitys.TP_OrderLogEntity", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("c_AreaLoc")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("c_CanStart")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("c_CarrierID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_DeleteMark")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("c_DueTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("c_EnabledMark")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_FailedNum")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_GroupId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_GroupMark")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_GroupOrder")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_GroupType")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_HandleFlag")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_Id")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_LotInfo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_LotQTY")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_ManualFlag")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_OrderID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_OrderSource")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_OrderType")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_PartNum")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_Priority")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_SourceLoc")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_SourcePort")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_SucceedNum")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_Sw01")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_Sw02")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_Sw03")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_Sw04")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_Sw05")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_TargetLoc")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_TargetPort")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_TaskCount")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("c_TimeStamp")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("d_AnalyzeTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("d_CreateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("d_EndTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("d_PredictTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("d_StartTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("n_AGVID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("n_AGVType")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TP_OrderLog");
-                });
-
-            modelBuilder.Entity("siasun.MCS.ACSEntitys.TP_TaskListEntity", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<int?>("c_AGVId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_AGVTaskType")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_AGVType")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_ARSTaskmark")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_AreaIndex")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_CarrierID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_ConfirmFlag")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_DeleteMark")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_EnabledMark")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_GroupCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_GroupId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_GroupMark")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_GroupType")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_HandleFlag")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_Id")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_IsArvBuff")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_LastTask")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_ManualFlag")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_NextTask")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_OrderId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_OrderSource")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_Priority")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_RFIDCheckResult")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_RobotTaskType")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_Sw02")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_Sw03")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_Sw04")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_Sw05")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_TaskCode")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_TaskCode2")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_TaskCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_TaskId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_TaskNo")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("c_TimeStamp")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("c_WorkLoc")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("c_WorkLocType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("c_WorkMapLoc")
-                        .HasColumnType("int");
-
-                    b.Property<string>("c_WorkPort")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("d_AGVTime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("d_ActionTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("d_CreateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("d_DoneTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("d_DueTime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("d_EndTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("d_RobotTime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("d_SendTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("d_StartTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("d_UnlockTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TP_TaskList");
-                });
-
             modelBuilder.Entity("siasun.MCS.ACSEntitys.TP_TaskLogEntity", b =>
                 {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int?>("c_AGVId")
+                    b.Property<int>("c_AGVId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("c_AGVTaskType")
+                    b.Property<int>("c_AGVTaskType")
                         .HasColumnType("int");
 
-                    b.Property<int?>("c_AGVType")
+                    b.Property<int>("c_AGVType")
                         .HasColumnType("int");
 
-                    b.Property<int?>("c_ARSTaskmark")
+                    b.Property<int>("c_ARSTaskmark")
                         .HasColumnType("int");
 
-                    b.Property<int?>("c_AreaIndex")
+                    b.Property<int>("c_ASDConfirmFlag")
+                        .HasColumnType("int");
+
+                    b.Property<int>("c_AreaIndex")
                         .HasColumnType("int");
 
                     b.Property<string>("c_CarrierID")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("c_ConfirmFlag")
+                    b.Property<int>("c_DeleteMark")
                         .HasColumnType("int");
 
-                    b.Property<int?>("c_DeleteMark")
+                    b.Property<int>("c_EnabledMark")
                         .HasColumnType("int");
 
-                    b.Property<int?>("c_EnabledMark")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("c_FloorNo")
+                    b.Property<int>("c_FloorNo")
                         .HasColumnType("int");
 
                     b.Property<string>("c_GroupId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("c_GroupMark")
+                    b.Property<int>("c_GroupMark")
                         .HasColumnType("int");
 
-                    b.Property<int?>("c_GroupOrder")
+                    b.Property<int>("c_GroupOrder")
                         .HasColumnType("int");
 
-                    b.Property<int?>("c_GroupType")
+                    b.Property<int>("c_GroupType")
                         .HasColumnType("int");
 
-                    b.Property<int?>("c_HandleFlag")
+                    b.Property<int>("c_HandleFlag")
                         .HasColumnType("int");
 
                     b.Property<string>("c_Id")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("c_ManualFlag")
+                    b.Property<int>("c_ManualFlag")
                         .HasColumnType("int");
 
-                    b.Property<int?>("c_NowMapLoc")
+                    b.Property<int>("c_NowMapLoc")
                         .HasColumnType("int");
 
                     b.Property<string>("c_OrderId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("c_OrderSource")
+                    b.Property<int>("c_OrderType")
                         .HasColumnType("int");
 
-                    b.Property<int?>("c_Priority")
+                    b.Property<int>("c_Priority")
                         .HasColumnType("int");
 
                     b.Property<string>("c_RFIDCheckResult")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("c_RobotTaskType")
+                    b.Property<int>("c_RobotTaskType")
                         .HasColumnType("int");
 
                     b.Property<string>("c_Sw01")
@@ -2053,19 +1409,19 @@ namespace siasun.MCS.Migrations
                     b.Property<string>("c_Sw05")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("c_TaskCode")
+                    b.Property<int>("c_TaskCode")
                         .HasColumnType("int");
 
-                    b.Property<int?>("c_TaskCode2")
+                    b.Property<int>("c_TaskCode2")
                         .HasColumnType("int");
 
-                    b.Property<int?>("c_TaskCount")
+                    b.Property<int>("c_TaskCount")
                         .HasColumnType("int");
 
                     b.Property<string>("c_TaskId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("c_TaskNo")
+                    b.Property<int>("c_TaskNo")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("c_TimeStamp")
@@ -2074,7 +1430,7 @@ namespace siasun.MCS.Migrations
                     b.Property<string>("c_WorkLoc")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("c_WorkMapLoc")
+                    b.Property<int>("c_WorkMapLoc")
                         .HasColumnType("int");
 
                     b.Property<string>("c_WorkPort")
@@ -2083,31 +1439,31 @@ namespace siasun.MCS.Migrations
                     b.Property<string>("d_AGVTime")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("d_ActionTime")
+                    b.Property<DateTime>("d_ActionTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("d_CreateTime")
+                    b.Property<DateTime>("d_CreateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("d_DoneTime")
+                    b.Property<DateTime>("d_DoneTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("d_DueTime")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("d_EndTime")
+                    b.Property<DateTime>("d_EndTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("d_RobotTime")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("d_SendTime")
+                    b.Property<DateTime>("d_SendTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("d_StartTime")
+                    b.Property<DateTime>("d_StartTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("d_UnlockTime")
+                    b.Property<DateTime>("d_UnlockTime")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");

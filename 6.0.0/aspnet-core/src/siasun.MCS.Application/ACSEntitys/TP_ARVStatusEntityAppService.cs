@@ -23,10 +23,8 @@ namespace siasun.MCS.ACSEntitys
     [AbpAuthorize]
     public class TP_ARVStatusEntityAppService : MCSAppServiceBase, ITP_ARVStatusEntityAppService
     {
-        private readonly IRepository<TP_ARVStatusEntity, long>_tP_ARVStatusEntityRepository;
-        public TP_ARVStatusEntityAppService(
-IRepository<TP_ARVStatusEntity, long> ARVStatusEntityRepository
-)
+        private readonly IRepository<TP_ARVStatusEntity, string> _tP_ARVStatusEntityRepository;
+        public TP_ARVStatusEntityAppService(IRepository<TP_ARVStatusEntity, string> ARVStatusEntityRepository)
         {
             _tP_ARVStatusEntityRepository = ARVStatusEntityRepository;
         }
@@ -43,9 +41,9 @@ IRepository<TP_ARVStatusEntity, long> ARVStatusEntityRepository
         //[AbpAuthorize(TP_ARVStatusEntityPermissions.TP_ARVStatusEntity_Query)]
         public async Task<PagedResultDto<TP_ARVStatusEntityListDto>> GetPaged(GetTP_ARVStatusEntitysInput input)
         {
-
-            var query = _tP_ARVStatusEntityRepository.GetAll();
-            //.WhereIf(!input.FilterText.IsNullOrWhiteSpace(), a => a.Id != null);
+            //int[] str = input.TP_ARVStatusEntity.c_ARVId.Split("|");
+            var query = _tP_ARVStatusEntityRepository.GetAll()
+            .WhereIf(input.arvIdArr != null, a => input.arvIdArr.Contains(a.c_ARVId));
             // TODO:根据传入的参数添加过滤条件
 
             var count = await query.CountAsync();
@@ -65,7 +63,7 @@ IRepository<TP_ARVStatusEntity, long> ARVStatusEntityRepository
         /// 通过指定id获取TP_ARVStatusEntityListDto信息
         /// </summary>
         [AbpAuthorize(TP_ARVStatusEntityPermissions.TP_ARVStatusEntity_Query)]
-        public async Task<TP_ARVStatusEntityListDto> GetById(EntityDto<long> input)
+        public async Task<TP_ARVStatusEntityListDto> GetById(EntityDto<string> input)
         {
             var entity = await _tP_ARVStatusEntityRepository.GetAsync(input.Id);
 
@@ -79,14 +77,14 @@ IRepository<TP_ARVStatusEntity, long> ARVStatusEntityRepository
         /// <param name="input"></param>
         /// <returns></returns>
         [AbpAuthorize(TP_ARVStatusEntityPermissions.TP_ARVStatusEntity_Create, TP_ARVStatusEntityPermissions.TP_ARVStatusEntity_Edit)]
-        public async Task<GetTP_ARVStatusEntityForEditOutput> GetForEdit(NullableIdDto<long> input)
+        public async Task<GetTP_ARVStatusEntityForEditOutput> GetForEdit(string input)
         {
             var output = new GetTP_ARVStatusEntityForEditOutput();
             TP_ARVStatusEntityEditDto editDto;
 
-            if (input.Id.HasValue)
+            if (!string.IsNullOrEmpty(input))
             {
-                var entity = await _tP_ARVStatusEntityRepository.GetAsync(input.Id.Value);
+                var entity = await _tP_ARVStatusEntityRepository.GetAsync(input);
                 editDto = ObjectMapper.Map<TP_ARVStatusEntityEditDto>(entity);
             }
             else
@@ -110,7 +108,7 @@ IRepository<TP_ARVStatusEntity, long> ARVStatusEntityRepository
         public async Task CreateOrUpdate(CreateOrUpdateTP_ARVStatusEntityInput input)
         {
 
-            if (input.TP_ARVStatusEntity.Id.HasValue)
+            if (!string.IsNullOrEmpty(input.TP_ARVStatusEntity.c_Id))
             {
                 await Update(input.TP_ARVStatusEntity);
             }
@@ -145,7 +143,7 @@ IRepository<TP_ARVStatusEntity, long> ARVStatusEntityRepository
         {
             //TODO:更新前的逻辑判断，是否允许更新
 
-            var entity = await _tP_ARVStatusEntityRepository.GetAsync(input.Id.Value);
+            var entity = await _tP_ARVStatusEntityRepository.GetAsync(input.c_Id);
             //  input.MapTo(entity);
             //将input属性的值赋值到entity中
             ObjectMapper.Map(input, entity);
@@ -160,7 +158,7 @@ IRepository<TP_ARVStatusEntity, long> ARVStatusEntityRepository
         /// <param name="input"></param>
         /// <returns></returns>
         [AbpAuthorize(TP_ARVStatusEntityPermissions.TP_ARVStatusEntity_Delete)]
-        public async Task Delete(EntityDto<long> input)
+        public async Task Delete(EntityDto<string> input)
         {
             //TODO:删除前的逻辑判断，是否允许删除
             await _tP_ARVStatusEntityManager.DeleteAsync(input.Id);
@@ -172,7 +170,7 @@ IRepository<TP_ARVStatusEntity, long> ARVStatusEntityRepository
         /// 批量删除TP_ARVStatusEntity的方法
         /// </summary>
         [AbpAuthorize(TP_ARVStatusEntityPermissions.TP_ARVStatusEntity_BatchDelete)]
-        public async Task BatchDelete(List<long> input)
+        public async Task BatchDelete(List<string> input)
         {
             // TODO:批量删除前的逻辑判断，是否允许删除
             await _tP_ARVStatusEntityManager.BatchDelete(input);

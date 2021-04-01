@@ -16,13 +16,13 @@ namespace siasun.MCS.ACSEntitys.DomainService
     public class TP_TaskLogEntityManager :MCSDomainServiceBase, ITP_TaskLogEntityManager
     {
 		
-		private readonly IRepository<TP_TaskLogEntity,long> _tP_TaskLogEntityRepository;
+		private readonly IRepository<TP_TaskLogEntity,string> _tP_TaskLogEntityRepository;
 
 		/// <summary>
 		/// TP_TaskLogEntity的构造方法
 		/// 通过构造函数注册服务到依赖注入容器中
 		///</summary>
-	public TP_TaskLogEntityManager(IRepository<TP_TaskLogEntity, long> tP_TaskLogEntityRepository)	{
+	public TP_TaskLogEntityManager(IRepository<TP_TaskLogEntity, string> tP_TaskLogEntityRepository)	{
 			_tP_TaskLogEntityRepository =  tP_TaskLogEntityRepository;
 		}
 
@@ -51,7 +51,7 @@ namespace siasun.MCS.ACSEntitys.DomainService
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<TP_TaskLogEntity> FindByIdAsync(long id)
+        public async Task<TP_TaskLogEntity> FindByIdAsync(string id)
         {
             var entity = await _tP_TaskLogEntityRepository.GetAsync(id);
             return entity;
@@ -62,7 +62,7 @@ namespace siasun.MCS.ACSEntitys.DomainService
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<bool> IsExistAsync(long id)
+        public async Task<bool> IsExistAsync(string id)
         {
             var result = await _tP_TaskLogEntityRepository.GetAll().AnyAsync(a => a.Id == id);
             return result;
@@ -83,7 +83,7 @@ namespace siasun.MCS.ACSEntitys.DomainService
             await _tP_TaskLogEntityRepository.UpdateAsync(entity);
         }
 
-        public async Task DeleteAsync(long id)
+        public async Task DeleteAsync(string id)
         {
             //TODO:删除前的逻辑判断，是否允许删除
             await _tP_TaskLogEntityRepository.DeleteAsync(id);
@@ -94,7 +94,7 @@ namespace siasun.MCS.ACSEntitys.DomainService
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task BatchDelete(List<long> input)
+        public async Task BatchDelete(List<string> input)
         {
             //TODO:删除前的逻辑判断，是否允许删除
             await _tP_TaskLogEntityRepository.DeleteAsync(a => input.Contains(a.Id));
